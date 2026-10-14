@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin · WFH Monitor</title>
+  
+  <link rel="stylesheet" href="../frontend/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">WM</span><strong>Admin Dashboard</strong></div>
+    <div class="topbar-right">
+      <span id="adminName" class="muted small"></span>
+      <span id="connBadge" class="conn conn-off">Connecting…</span>
+      <button id="logoutBtn" class="btn btn-outline" type="button">Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <div class="stat"><div class="num" id="totalCount">0</div><div class="lbl">Total employees</div></div>
+      <div class="stat stat-online"><div class="num" id="onlineCount">0</div><div class="lbl">Online</div></div>
+      <div class="stat stat-inactive"><div class="num" id="inactiveCount">0</div><div class="lbl">Inactive</div></div>
+      <div class="stat stat-offline"><div class="num" id="offlineCount">0</div><div class="lbl">Offline</div></div>
+    </section>
+
+    <section class="toolbar">
+      <input id="searchInput" type="search" placeholder="Search by name or email…">
+      <select id="statusFilter">
+        <option value="all">All statuses</option>
+        <option value="online">Online</option>
+        <option value="inactive">Inactive</option>
+        <option value="offline">Offline</option>
+      </select>
+    </section>
+
+    <section id="empGrid" class="emp-grid"></section>
+    <p id="emptyState" class="empty hidden">No employees match your search.</p>
+  </main>
+
+  <script src="js/config.js" data-socket="true"></script>
+  <script type="module" src="js/admin.js"></script>
+    <script src="js/fx.js" defer></script>
+</body>
+</html>
