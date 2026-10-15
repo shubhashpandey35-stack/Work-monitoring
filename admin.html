@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Admin Console · WorkSphere</title>
+  <link rel="stylesheet" href="css/style.css?v=20261011">
+</head>
+<body class="app-page admin-page">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="admin.html"><span class="brand-mark">W</span><span><strong>WorkSphere</strong><small>WORKFORCE INSIGHTS</small></span></a>
+    <div class="sidebar-label">WORKSPACE</div>
+    <a class="side-link active" href="admin.html"><span class="side-icon">▦</span> Overview</a>
+    <a class="side-link" href="#employees"><span class="side-icon">♙</span> Employees <span class="side-count" id="navEmployeeCount">0</span></a>
+    <a class="side-link" href="#sessions"><span class="side-icon">◷</span> Session history</a>
+    <div class="sidebar-bottom"><div class="privacy-mini"><span class="privacy-dot"></span><div><strong>Privacy-first tracking</strong><small>Consent-based location sharing</small></div></div><div class="sidebar-user"><div class="admin-avatar">AD</div><div class="sidebar-user-info"><strong id="adminName">Administrator</strong><small>System admin</small></div><button id="logoutBtn" class="icon-btn" type="button" aria-label="Log out" title="Log out">↗</button></div></div>
+  </aside>
+  <main class="main-shell">
+    <header class="page-header"><div><div class="eyebrow">WORKSPACE / OVERVIEW</div><h1>Workforce overview</h1><p>Monitor employee presence and review recent work sessions.</p></div><div class="header-actions"><span id="connBadge" class="conn conn-off"><span class="conn-dot"></span> Connecting…</span><button class="btn btn-outline" id="refreshBtn" type="button">↻ Refresh data</button></div></header>
+    <section class="welcome-strip"><div><span class="welcome-kicker">LIVE MONITORING</span><h2>Your team, at a glance.</h2><p>Status updates stream live while employees are connected.</p></div><div class="welcome-orb" aria-hidden="true"><span>◉</span></div></section>
+    <section class="stats stats-modern" aria-label="Employee status summary">
+      <article class="stat stat-total"><div class="stat-top"><span class="stat-label">Total employees</span><span class="stat-icon">♙</span></div><div class="num" id="totalCount">0</div><div class="stat-foot">Registered team members</div></article>
+      <article class="stat stat-online"><div class="stat-top"><span class="stat-label">Online now</span><span class="stat-icon">●</span></div><div class="num" id="onlineCount">0</div><div class="stat-foot"><span class="tiny-dot green"></span> Active in the workspace</div></article>
+      <article class="stat stat-inactive"><div class="stat-top"><span class="stat-label">Inactive</span><span class="stat-icon">◷</span></div><div class="num" id="inactiveCount">0</div><div class="stat-foot">Connected, no recent activity</div></article>
+      <article class="stat stat-offline"><div class="stat-top"><span class="stat-label">Offline</span><span class="stat-icon">○</span></div><div class="num" id="offlineCount">0</div><div class="stat-foot">Not currently connected</div></article>
+    </section>
+    <section class="panel" id="employees"><div class="section-heading"><div><div class="eyebrow">TEAM DIRECTORY</div><h2>Employee presence</h2><p>Search the team, filter status and view consented location details.</p></div><span class="section-pill"><span class="tiny-dot green"></span> Live data</span></div>
+      <div class="toolbar toolbar-modern"><label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search name or email…" aria-label="Search employees"></label><label class="filter-select"><span>Status</span><select id="statusFilter"><option value="all">All statuses</option><option value="online">Online</option><option value="inactive">Inactive</option><option value="offline">Offline</option></select></label></div>
+      <section id="empGrid" class="emp-grid"></section><p id="emptyState" class="empty hidden">No employees match your search.</p>
+    </section>
+    <section class="panel session-panel" id="sessions"><div class="section-heading"><div><div class="eyebrow">AUDIT TRAIL</div><h2>Recent work sessions</h2><p>Session durations are calculated from recorded connection times.</p></div><button id="sessionsRefreshBtn" class="btn btn-outline btn-small" type="button">↻ Reload sessions</button></div>
+      <div class="table-wrap"><table class="session-table"><thead><tr><th>EMPLOYEE</th><th>STARTED</th><th>ENDED</th><th>DURATION</th><th>SESSION</th></tr></thead><tbody id="sessionsBody"><tr><td colspan="5" class="table-empty">Loading session history…</td></tr></tbody></table></div><p class="table-note">Presence duration is a technical session estimate, not proof of work performed. Browser closure or network loss may delay the end timestamp briefly.</p>
+    </section>
+    <footer class="page-footer"><span>WorkSphere · Workforce insights</span><span>Location is visible only when an employee opts in.</span></footer>
+  </main>
+  <script src="js/config.js" data-socket="true"></script><script type="module" src="js/admin.js"></script>
+</body>
+</html>

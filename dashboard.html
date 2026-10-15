@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Dashboard · WFH Monitor</title>
+  <link rel="stylesheet" href="css/style.css?v=20261011">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">WM</span><strong>WFH Monitor</strong></div>
+    <div class="topbar-right">
+      <span id="connBadge" class="conn conn-off">Connecting…</span>
+      <button id="logoutBtn" class="btn btn-outline" type="button">Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="notice">
+      <strong>Privacy notice:</strong> While this page is open, your <em>Online / Inactive</em> status and last-activity time are
+      shared with your admin. We never record what you type or where your mouse goes, only whether you were active.
+      Your location is shared only if you switch it on below, and you can switch it off at any time.
+    </div>
+
+    <section class="grid-2">
+      <div class="card">
+        <h2>My profile</h2>
+        <div class="profile">
+          <div id="avatarWrap"></div>
+          <div>
+            <h2 id="userName">…</h2>
+            <p id="userEmail" class="muted"></p>
+            <p id="userRole" class="muted small"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Activity status</h2>
+        <div class="row"><span>Current status</span><span id="statusBadge"></span></div>
+        <div class="row"><span>Last activity</span><span id="lastActivity">—</span></div>
+        <div class="row"><span>Inactive after</span><span id="timeoutText">—</span></div>
+      </div>
+    </section>
+
+    <section class="card time-card">
+      <h2>My time totals</h2>
+      <p class="muted small" style="margin-bottom:6px">Total time in each status since tracking began. Your admin sees the same numbers.</p>
+      <div class="row time-row time-online"><span>Online</span><span class="time-val" id="time-online">—</span></div>
+      <div class="row time-row time-inactive"><span>Inactive</span><span class="time-val" id="time-inactive">—</span></div>
+      <div class="row time-row time-offline"><span>Offline</span><span class="time-val" id="time-offline">—</span></div>
+    </section>
+
+    <section class="card">
+      <h2>Location (optional, needs your consent)</h2>
+      <label class="switch-row">
+        <input id="locToggle" type="checkbox">
+        <span>Share my location with my admin</span>
+      </label>
+      <p id="locMessage" class="muted small" style="margin-bottom:10px">Location sharing is off.</p>
+      <div id="locBox" class="hidden">
+        <p class="coords" id="locCoords"></p>
+        <p class="muted small">Updated: <span id="locUpdated"></span></p>
+        <p style="margin-top:10px">
+          <a id="locMapLink" href="#" target="_blank" rel="noopener noreferrer">View on map</a>
+          &nbsp;·&nbsp;
+          <button id="locRefreshBtn" class="btn btn-outline" type="button" style="padding:5px 12px">Refresh now</button>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/config.js" data-socket="true"></script>
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

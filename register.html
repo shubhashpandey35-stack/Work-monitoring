@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register · WFH Monitor</title>
+  <link rel="stylesheet" href="css/style.css?v=20261011">
+</head>
+<body class="auth-page">
+  <main class="auth-wrap">
+    <div class="auth-card">
+      <div class="brand brand-center">
+        <span class="logo">WM</span>
+        <div><h1>Create account</h1><p class="muted small">Employee registration</p></div>
+      </div>
+
+      <div id="alert" class="alert hidden" role="alert"></div>
+
+      <form id="registerForm" novalidate>
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input id="name" type="text" autocomplete="name" placeholder="Rahul Sharma">
+          <small class="field-error" id="nameError"></small>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" placeholder="you@company.com">
+          <small class="field-error" id="emailError"></small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="new-password" placeholder="Min 8 characters">
+          <p class="hint">At least 8 characters, with a letter and a number.</p>
+          <small class="field-error" id="passwordError"></small>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm password</label>
+          <input id="confirmPassword" type="password" autocomplete="new-password" placeholder="Repeat password">
+          <small class="field-error" id="confirmPasswordError"></small>
+        </div>
+        <div class="form-group">
+          <label for="profilePhoto">Profile photo (optional)</label>
+          <div class="photo-row">
+            <div id="photoPreview" class="avatar avatar-md avatar-fallback">?</div>
+            <input id="profilePhoto" type="file" accept="image/png,image/jpeg,image/webp">
+          </div>
+          <p class="hint">JPG, PNG or WEBP, max 2 MB.</p>
+          <small class="field-error" id="profilePhotoError"></small>
+        </div>
+        <button id="submitBtn" class="btn btn-primary btn-block" type="submit">
+          <span class="btn-text">Register</span><span class="spinner hidden"></span>
+        </button>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+  </main>
+  <script src="js/config.js"></script>
+  <script type="module" src="js/register.js"></script>
+</body>
+</html>
